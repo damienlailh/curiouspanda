@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- basic data of the html file -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuriousPanda</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Navigation bar -->
+    <div id="navbar"></div>
+
+    <!-- Interactive Panda Widget -->
+    <div id="interactive-panda-container" class="interactive-panda-container">        
+        <!-- Container for interactive panda to appear -->
+        <div id="topic-bubble">
+            <div class="bubbles-row">
+                <!-- Moved onclick here for a better click target -->
+                <div class="bubble" onclick="wakePanda('Food')">Food</div>
+                <div class="bubble" onclick="wakePanda('Habitat')">Habitat</div>
+                <div class="bubble" onclick="wakePanda('Bamboo')">Bamboo</div>
+            </div>
+        </div>
+
+        <!-- The Fact Bubble (hidden by default) -->
+        <div id="fact-bubble" class="speech-bubble" onclick="dismissFact()">
+            <p id="fact-text"></p>
+            <span class="dismiss-note">(Click to dismiss)</span>
+        </div>
+        <div id="panda-wrapper">
+            <div id="panda"></div>
+            <div id="panda-white-rectangle"></div>
+        </div>
+
+        
+    </div>
+
+        
+    </div>
+    <main class="article-page">
+    <header class="article-header">
+        <h1>What is CuriousPanda about?</h1>
+    </header>
+
+    <section class="article-content">
+        <p>
+            Growing up, pandas have always been extremely fascinating creatures to me. Similarly, I have always taken great interests in many different topics and would love to share it with everyone like you. Here, whether you are the serious academic weapon or an enthusiast looking for interesting opinions, I hope you all will have something to take away. Panda wishes you always stay curious!
+        </p>
+    </section>
+    </main>
+    <!-- Link to your JavaScript file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="/script.js"></script>
+    <script src="/loadNav.js"></script>
+</body>
+
+
+</html>
