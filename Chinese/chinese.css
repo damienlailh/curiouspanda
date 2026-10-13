@@ -1,0 +1,80 @@
+/* Only Chinese pages load this stylesheet and use this body class. */
+.chinese-section .chinese-title-banner {
+    padding: 42px 24px 38px;
+    text-align: center;
+    border-bottom: 1px solid rgba(207, 255, 0, 0.12);
+    background: radial-gradient(ellipse at 50% 100%, rgba(207, 255, 0, 0.08), transparent 68%);
+}
+
+.chinese-section .chinese-title-kicker {
+    margin: 0 0 16px;
+    color: #cfff00;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+}
+
+.chinese-section .chinese-daily-title {
+    display: block;
+    width: fit-content;
+    max-width: min(1080px, 100%);
+    margin: 0 auto;
+    color: #f5efdf;
+    font-family: "KaiTi", "STKaiti", "Kaiti SC", "Noto Serif CJK SC", "SimSun", serif;
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+}
+
+.chinese-section .chinese-daily-title:hover {
+    color: #cfff00;
+}
+
+.chinese-section .chinese-daily-title:focus-visible {
+    outline: 2px solid #cfff00;
+    outline-offset: 10px;
+    border-radius: 4px;
+}
+
+.chinese-section .chinese-title-caption {
+    margin: 18px 0 0;
+    color: rgba(245, 239, 223, 0.5);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+}
+
+/* The banner scrolls away; navigation stays at the top afterward. */
+.chinese-section #navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.chinese-section #navbar nav {
+    position: relative;
+}
+
+.chinese-section main.article-collection,
+.chinese-section main.article-page {
+    padding-top: 56px;
+}
+
+.chinese-section .article-content[lang="zh-Hans"],
+.chinese-section .article-page .article-content {
+    line-break: strict;
+}
+
+@media (max-width: 600px) {
+    .chinese-section .chinese-title-banner {
+        padding: 32px 20px;
+    }
+
+    .chinese-section main.article-collection,
+    .chinese-section main.article-page {
+        padding-top: 40px;
+    }
+}

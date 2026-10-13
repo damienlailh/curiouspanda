@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philosophy</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <!-- Coding out the main content -->
+    <main class="container article-collection" data-article-collection>
+        <header class="article-header">
+            <h1 class="page-title">The Way of Thinking</h1>
+        </header>
+        <section class="article-content">
+            <p>
+                A collection of reflections on philosophy, meaning, purpose, and the different ways people have tried to understand life.
+            </p>
+        </section>
+
+        <!-- Reuse these controls and articleCollection.js on other section pages.
+             Each card's article-theme badge defines its preset theme. -->
+        <div class="collection-controls" data-collection-controls hidden>
+            <label for="article-search">Search articles</label>
+            <input id="article-search" type="search" data-article-search
+                placeholder="Search by title, keyword, or theme..." aria-controls="article-results">
+            <p class="collection-filter-help" id="theme-filter-help">Select themes to narrow your search. Articles must match every selected theme.</p>
+            <div class="theme-filters" data-theme-filters role="group" aria-label="Filter by themes" aria-describedby="theme-filter-help"></div>
+            <p class="collection-status" data-collection-status role="status" aria-live="polite" aria-atomic="true"></p>
+        </div>
+
+        <div class="article-grid" id="article-results">
+
+            <article class="card article-card-image" style="--card-bg: url('/opinion/philosophy/limit-of-human-mind.png');">
+                <div class="card-overlay"></div>
+                <div class="article-themes">
+                    <span class="article-theme">Social Commentary</span>
+                    <span class="article-theme">Philosophy</span>
+                </div>
+                <div class="card-content">
+                    <h2>
+                        <a href="/opinion/philosophy/articles/Limit_of_human_mind.html">The Limit of the Human Mind</a>
+                    </h2>
+
+                    <p class="excerpt">
+                        A forthcoming reflection on the limits of human thought and understanding.
+                    </p>
+
+                    <a href="/opinion/philosophy/articles/Limit_of_human_mind.html" class="read-more">Read Entire Article</a>
+                </div>
+            </article>
+
+        </div>
+        <p class="collection-empty" data-collection-empty hidden>No articles match your search. Try another keyword or choose All themes.</p>
+    </main>
+
+    <div id="footer"></div>
+    <!-- Link to JavaScript -->
+    <script src="/articleCollection.js" defer></script>
+    <script src="/loadNav.js"></script> 
+    <script src="/loadFooter.js"></script>
+</body>
+
+</html>

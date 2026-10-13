@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Writings | CuriousPanda</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/Chinese/chinese.css">
+</head>
+
+<body class="chinese-section">
+    <section class="chinese-title-banner" data-chinese-daily-title aria-labelledby="chinese-daily-label" lang="zh-Hans">
+        <p class="chinese-title-kicker" id="chinese-daily-label">今日一题</p>
+        <a class="chinese-daily-title" data-daily-title-link href="/Chinese/belief.html">天生我材必有用</a>
+        <p class="chinese-title-caption">字里行间，遇见思考。</p>
+    </section>
+
+    <!-- Navigation bar -->
+    <div id="navbar"></div>
+
+    <main class="container article-collection" data-article-collection data-chinese-collection>
+        <header class="article-header">
+            <h1 class="page-title">Chinese Writings</h1>
+        </header>
+
+        <section class="article-content">
+            <p>A collection of essays and reflections written in Chinese.</p>
+        </section>
+
+        <!-- Reuse these controls and articleCollection.js on other section pages.
+             Each card's article-theme badge defines its preset theme. -->
+        <div class="collection-controls" data-collection-controls hidden>
+            <label for="article-search">Search articles</label>
+            <input id="article-search" type="search" data-article-search
+                placeholder="Search by title, keyword, or theme..." aria-controls="article-results">
+            <p class="collection-filter-help" id="theme-filter-help">Select themes to narrow your search. Articles must match every selected theme.</p>
+            <div class="theme-filters" data-theme-filters role="group" aria-label="Filter by themes" aria-describedby="theme-filter-help"></div>
+            <p class="collection-status" data-collection-status role="status" aria-live="polite" aria-atomic="true"></p>
+        </div>
+
+        <div class="article-grid" id="article-results">
+            <article class="card article-card-image" style="--card-bg: url('/Chinese/images/panda-belief.png');" lang="zh-Hans">
+                <div class="card-overlay"></div>
+                <div class="article-themes">
+                    <span class="article-theme">随笔</span>
+                    <span class="article-theme">人生思考</span>
+                </div>
+                <div class="card-content">
+                    <h2>
+                        <a href="/Chinese/belief.html">天生我材必有用</a>
+                    </h2>
+
+                    <p class="excerpt">
+                        天生我材必有用，何须浮议乱心胸。人生自古多磨折，一时失意亦从容。 
+                    </p>
+
+                    <a href="/Chinese/belief.html" class="read-more">阅读全文</a>
+                </div>
+            </article>
+        </div>
+        <p class="collection-empty" data-collection-empty hidden>No articles match your search. Try another keyword or choose All themes.</p>
+    </main>
+    <div id="footer"></div>
+    <!-- Link to JavaScript -->
+    <script src="/Chinese/daily-title.js" defer></script>
+    <script src="/articleCollection.js" defer></script>
+    <script src="/loadNav.js"></script>
+    <script src="/loadFooter.js"></script>
+</body>
+</html>

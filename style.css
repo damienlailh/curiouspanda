@@ -1,205 +1,598 @@
-/* ---------------               Global background color            ---------------------*/
-body {
-    background-color: #ffffff; /* The "Dark Mode" background */
-    color: #000000;            /* Light grey text for readability */
-    margin: 0;
-    padding: 0;
-}
-
-
-
-
-
 /* ---------------------         Coding the navigation bar         -----------------------*/
 
-/* 
-    This is the CSS for the container class of the navigation bar --
-    make this a flex box so that everything on the navigation bar is horizontal
-*/
-.container {
-    display: flex; 
-    justify-content: space-between;
-    align-items: center; 
-}
+/* --------------------- Navigation Bar ----------------------- */
 
-/*
-    This is the CSS for the navigation bar -- nav-links is the class for the 
-    navigation links to the other pages
-*/
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 20px; 
-    padding: 0;
-    margin: 0;
-}
-
-/*
-    Add colour to the navigation bar
-*/
 nav {
-    background-color: #ffffff;
-    padding: 10px 20px; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    background: rgba(5, 5, 5, 0.72);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/*
-    Add colour to the navigation bar links
-*/
-.nav-links a {
-    color: #000000;
+nav .container {
+    width: min(1180px, 92vw);
+    height: 76px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
 }
 
-/*
-    Add colour to the navigation bar logo
-*/
-
-.logo img{
-    height: 40px; 
+.logo img {
+    height: 42px;
     width: auto;
     display: block;
 }
 
-/*
-    Underline the navigation bar links on hover
-*/
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 34px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.72);
+    text-decoration: none;
+    font-size: 0.98rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
 
 .nav-links a:hover {
-    text-decoration: underline; 
+    color: #cfff00;
+    transform: translateY(-1px);
 }
 
-/*
-    Add the subpages to Book Review.
-*/
+/* Dropdown */
+
 .dropdown {
     position: relative;
-    display: inline-block;
 }
+
 .dropdown-content {
     display: none;
     position: absolute;
+    top: 100%;
     right: 0;
-    background-color: #ffffff;
-    min-width: 120px;
-    box-shadow: 0px 8px 16px rgba(255, 255, 255, 0.2);
-    z-index: 1;
+
+    min-width: 190px;
+    padding: 10px;
+    margin: 0;
     list-style: none;
+
+    background: rgba(15, 15, 15, 0.96);
+    border: 1px solid rgba(207, 255, 0, 0.16);
+    border-radius: 18px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
 }
+
 .dropdown-content li a {
-    color: rgb(0, 0, 0);
-    padding: 8px 12px;
     display: block;
-    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.92rem;
 }
+
+.dropdown-content li a:hover {
+    background: rgba(207, 255, 0, 0.08);
+    color: #cfff00;
+}
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
 
-
-/* ------ Coding the Interactive panda widget on index.html ------ */
-.interactive-panda-container {
-    position: relative;
-    width: 320px;
-    margin: 60px auto;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    text-align: center;
+/* ---------------- Creating the initial panda look + global background ---------------- */
+main {
+    padding-top: 0px;
 }
 
-#panda-wrapper {
-    position: relative;
-    width: 320px;
-    height: 320px;
-    margin: 0 auto 20px auto;
+* {
+    box-sizing: border-box;
 }
 
-#panda {
-    width: 100%;
-    height: 100%;
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(210, 255, 0, 0.08), transparent 32%),
+        #050505;
+    color: #ffffff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-#panda-white-rectangle {
-    position: absolute;
-    width: 100px;
-    height: 35px;
-    right: 0;
-    bottom: 0;
-    background-color: white;
-    z-index: 5;
-    pointer-events: none;
-}
-#panda svg {
-    width: 100% !important;
-    height: 100% !important;
-    display: block;
-}
+.preview-shell {
+    width: min(1180px, 92vw);
+    min-height: 100vh;
+    margin: 0 auto;
+    padding-top: 96px;
 
-
-/* --- Floating Logic --- */
-.bubbles-row {
-    display: flex;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    align-items: center;
     justify-content: center;
-    margin-bottom: 40px;
-    position: relative;
-    z-index: 10; /* Ensures bubbles are on top */
+    gap: 40px;
 }
 
-.bubble {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    padding: 10px 18px;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    /* This creates the floating effect */
-    animation: floatBubble 3s ease-in-out infinite;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+.preview-text {
+    padding-left: 0;
 }
 
-/* Staggering the floating so they don't move in unison */
-.bubble:nth-child(2) { animation-delay: 0.8s; }
-.bubble:nth-child(3) { animation-delay: 1.6s; }
-
-.bubble:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.panda-orb-wrap {
+    justify-content: center;
 }
 
-.bubble a {
+.preview-kicker {
+    color: #cfff00;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+.preview-text h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.95;
+    margin: 0 0 22px;
+    letter-spacing: -0.06em;
+}
+
+.preview-text p {
+    max-width: 520px;
+    color: rgba(255,255,255,0.68);
+    font-size: 1.08rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.preview-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.preview-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 22px;
+    border-radius: 999px;
+    font-weight: 800;
     text-decoration: none;
-    color: #555;
-    font-weight: bold;
+    transition: transform 0.2s ease, background 0.2s ease;
 }
 
-@keyframes floatBubble {
+.preview-btn.primary {
+    background: #cfff00;
+    color: #000;
+}
+
+.preview-btn.secondary {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #fff;
+}
+
+.preview-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* ---------------- Animated Panda Orb ---------------- */
+
+.panda-orb-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+}
+
+.panda-orb {
+    position: relative;
+    width: min(440px, 100%);
+    aspect-ratio: 1 / 1;
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+    animation: pandaOrbFloat 7s ease-in-out infinite;
+}
+
+.orb-background {
+    position: absolute;
+    inset: 8%;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+        rgba(210, 255, 0, 0.19) 0%,
+        rgba(210, 255, 0, 0.07) 42%,
+        transparent 72%);
+    filter: blur(12px);
+    pointer-events: none;
+    animation: orbGlowPulse 6s ease-in-out infinite;
+}
+
+/* Radii are 32%, 40%, and 48% of the orb width.
+   The 8% gap keeps the 8px electrons apart, regardless of their phases. */
+.atom-orbit {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(210, 255, 0, 0.19);
+    pointer-events: none;
+    transform: rotate(var(--orbit-phase));
+    animation: atomSpin var(--orbit-duration) linear infinite;
+}
+
+.atom-electron {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 8px;
+    height: 8px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: #d8ff3d;
+    box-shadow: 0 0 8px rgba(216, 255, 61, 0.5);
+}
+
+.atom-orbit-one {
+    inset: 18%;
+    --orbit-phase: -35deg;
+    --orbit-duration: 14s;
+}
+
+.atom-orbit-two {
+    inset: 10%;
+    --orbit-phase: 105deg;
+    --orbit-duration: 22s;
+    border-color: rgba(227, 238, 194, 0.13);
+    animation-direction: reverse;
+}
+
+.atom-orbit-two .atom-electron {
+    background: #edf5cc;
+    box-shadow: 0 0 8px rgba(237, 245, 204, 0.4);
+}
+
+.atom-orbit-three {
+    inset: 2%;
+    --orbit-phase: 215deg;
+    --orbit-duration: 30s;
+    border-color: rgba(210, 255, 0, 0.12);
+}
+
+/* A softly shaded cartoon panda sits inside the orbital lanes. */
+.panda-face {
+    position: relative;
+    width: 58%;
+    z-index: 2;
+    pointer-events: none;
+    animation: pandaBreathing 6s ease-in-out infinite;
+}
+
+.panda-portrait {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.4));
+}
+
+/* Orbiting topic tags */
+
+.orbit-tag {
+    position: absolute;
+    z-index: 6;
+    padding: 9px 15px;
+    border-radius: 999px;
+    background: rgba(18, 18, 18, 0.72);
+    border: 1px solid rgba(210, 255, 0, 0.18);
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    animation: orbitTagFloat 4s ease-in-out infinite;
+}
+
+.orbit-tag:hover{
+    color: #cfff00;
+    border-color: rgba(207, 255, 0, 0.45);
+    background: rgba(207, 255, 0, 0.1);
+}
+
+.orbit-tag-chinese {
+    top: 5%;
+    left: 0;
+}
+
+.orbit-tag-gp {
+    top: 22%;
+    right: -2%;
+    animation-delay: 0.7s;
+}
+
+.orbit-tag-nature {
+    bottom: 14%;
+    left: -2%;
+    animation-delay: 1.2s;
+}
+
+.orbit-tag-ideas {
+    bottom: 3%;
+    right: 1%;
+    animation-delay: 1.8s;
+}
+
+/* ---------- Animations ---------- */
+
+@keyframes pandaOrbFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes orbGlowPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.78;
+    }
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+}
+
+@keyframes atomSpin {
+    from { transform: rotate(var(--orbit-phase)); }
+    to { transform: rotate(calc(var(--orbit-phase) + 360deg)); }
+}
+
+@keyframes pandaBreathing {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.015); }
+}
+
+@keyframes orbitTagFloat {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-8px); }
 }
 
-/* --- Fact State --- */
+/* ---------- Responsive ---------- */
 
+@media (max-width: 850px) {
+    body {
+        overflow: auto;
+    }
 
-#fact-bubble {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f7;
-    border: 1px solid #e5e5e5;
-    border-radius: 12px;
-    padding: 15px;
-    top: -20px;
-    width: 90%;
-    left: 5%;
-    z-index: 20;
-    cursor: pointer;
+    .preview-shell {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 70px 0;
+        text-align: center;
+    }
+
+    .preview-text {
+        padding-left: 0;
+    }
+
+    .preview-text p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .preview-actions {
+        justify-content: center;
+    }
 }
 
-.dismiss-note {
-    font-size: 10px;
-    color: #aaa;
+@media (max-width: 700px) {
+    .panda-orb {
+        width: min(360px, 100%);
+    }
+
+    .orbit-tag {
+        font-size: 0.74rem;
+        padding: 7px 12px;
+    }
+
+    .orbit-tag-gp {
+        right: 2%;
+    }
+
+    .orbit-tag-nature {
+        left: 2%;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    .panda-orb,
+    .orb-background,
+    .atom-orbit,
+    .panda-face,
+    .orbit-tag {
+        animation: none;
+    }
+}
+
+
+/* Curiosity Portal Cards */
+/* ---------------- Curiosity Portal Cards ---------------- */
+
+.portal-section {
     display: block;
-    margin-top: 5px;
+    width: min(1200px, 94vw);
+    margin: 80px auto 120px auto;
+    padding: 0;
+}
+
+.portal-section .section-kicker {
+    color: #cfff00;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.86rem;
+    font-weight: 800;
+    margin: 0 0 14px 0;
+}
+
+.portal-section .section-title {
+    color: #ffffff;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.06em;
+    margin: 0 0 64px 0;
+}
+
+.portal-section .section-title::after {
+    content: "";
+    display: block;
+    width: 72px;
+    height: 5px;
+    margin-top: 24px;
+    background: #cfff00;
+    border-radius: 999px;
+}
+
+.portal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 360px));
+    gap: 28px;
+    justify-content: start;
+    width: 100%;
+}
+
+.portal-card {
+    position: relative;
+    display: block;
+    min-height: 330px;
+    border-radius: 22px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #ffffff;
+    background: #111111;
+    border: 1px solid rgba(207, 255, 0, 0.12);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    isolation: isolate;
+    transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.portal-card-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    transform: scale(1.02);
+    transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+.portal-card-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.92) 0%,
+            rgba(0, 0, 0, 0.62) 38%,
+            rgba(0, 0, 0, 0.18) 72%
+        );
+}
+
+.portal-card-content {
+    position: absolute;
+    left: 30px;
+    right: 88px;
+    bottom: 32px;
+    z-index: 2;
+}
+
+.portal-card-content h3 {
+    font-size: 2rem;
+    line-height: 1;
+    margin: 0 0 12px 0;
+    color: #ffffff;
+    letter-spacing: -0.04em;
+}
+
+.portal-card-content p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1rem;
+    line-height: 1.55;
+}
+
+.portal-arrow {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    z-index: 3;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #cfff00;
+    color: #000000;
+    font-size: 1.8rem;
+    font-weight: 800;
+    transform: translateY(10px) scale(0.92);
+    opacity: 0.92;
+    transition: transform 0.28s ease, opacity 0.28s ease;
+}
+
+.portal-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(207, 255, 0, 0.48);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.48);
+}
+
+.portal-card:hover .portal-card-img {
+    transform: scale(1.09);
+    filter: brightness(1.08) saturate(1.08);
+}
+
+.portal-card:hover .portal-arrow {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+@media (max-width: 700px) {
+    .portal-section {
+        margin: 60px auto 90px auto;
+    }
+
+    .portal-section .section-title {
+        margin-bottom: 40px;
+    }
+
+    .portal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portal-card {
+        min-height: 280px;
+    }
 }
 
 
@@ -209,118 +602,685 @@ nav {
 
 
 
-/* ---------------          Coding the news article layout for lifepurpose      ------------------*/
+/* Coding news article layout */
+/* --------------- Coding the news/article listing layout ------------------*/
+
+/* Offset pages from fixed navbar */
+.article-page,
+main.container {
+    padding-top: 120px;
+}
+
 /* Coding the position of title and the cards -- override the display: flex */
 main.container {
     display: block;
     text-align: center;
-    padding-left: 40px;
-    padding-right: 40px;
-    box-sizing: border-box; 
+    padding: 120px 40px 0 40px;
+    box-sizing: border-box;
 }
 
+/* Page titles for listing pages */
+.page-title,
+main.container h1 {
+    color: #ffffff;
+}
 
 /* Coding the grid container */
 .article-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 48%));
-    gap: 20px;
-    margin-top: 30px;
-    justify-content: start;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 420px));
+    gap: 24px;
+    margin: 30px auto 0 auto;
+    justify-content: center;
+    width: 100%;
 }
-
 
 /* Coding the individual cards */
 .card {
-    background-color: #f9f9f9;
+    background-color: #111111;
+    color: #ffffff;
     padding: 20px;
     border-radius: 8px;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 2px 14px rgba(0,0,0,0.28);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.2s ease; /* Add a smooth transition effect */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
-/* Targeting the headers in the cards to change their color */
-.card h2 a {
-    color: #2c3e50;
+/* Image background version of article cards */
+
+.article-card-image {
+    position: relative;
+    min-height: 280px;
+    overflow: hidden;
+    isolation: isolate;
 }
 
-/* Hover effect of the headers */
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    background-color: #ffffff;    
+.article-card-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* Render one image layer, filling the card without letterboxing. */
+    background-image: var(--card-bg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -2;
+    transform: scale(1.02);
+    transition: transform 0.35s ease, filter 0.35s ease;
 }
 
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.88) 0%,
+            rgba(0, 0, 0, 0.62) 45%,
+            rgba(0, 0, 0, 0.18) 100%
+        );
+}
 
+/* Fix links inside image article cards */
 
+.article-card-image a {
+    color: inherit;
+    text-decoration: none;
+}
 
-/*----------------------- Coding the article layout for Life Lessons -----------------------*/
+.article-card-image .card-content h2 a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.article-card-image .card-content h2 a:hover {
+    color: #cfff00;
+}
+
+.article-card-image .read-more {
+    color: #cfff00;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.article-card-image .read-more:hover {
+    text-decoration: underline;
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.article-card-image:hover::before {
+    transform: scale(1.08);
+    filter: brightness(1.08) saturate(1.08);
+}
+
+/* ---------------- Migrated Individual Article Page ---------------- */
+
 .article-page {
     display: block;
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 0 20px;
+    max-width: 860px;
+    margin: 0 auto 80px auto;
+    padding: 140px 24px 0 24px;
+    color: #ffffff;
+    box-sizing: border-box;
 }
+
+/* Article header */
 
 .article-header {
-    margin-bottom: 40px;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 20px;
+    text-align: center;
+    margin-bottom: 48px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.article-content p{
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: justify;
-    hyphens: auto;
+.article-category {
+    display: inline-block;
+    margin: 0 0 18px 0;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(207, 255, 0, 0.1);
+    border: 1px solid rgba(207, 255, 0, 0.22);
+    color: #cfff00;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
-.article-content ul {
+.article-header h1 {
+    max-width: 780px;
+    margin: 0 auto 18px auto;
+    color: #ffffff;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.08;
+    letter-spacing: -0.05em;
+}
+
+.article-subtitle {
+    max-width: 680px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+
+.article-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 22px;
+    color: rgba(255, 255, 255, 0.52);
+    font-size: 0.92rem;
+    font-weight: 600;
+}
+
+/* Article content */
+
+.article-content {
+    max-width: 740px;
+    margin: 0 auto;
+}
+
+.article-content p {
+    font-size: 1.08rem;
+    line-height: 1.85;
+    margin: 0 0 24px 0;
+    color: rgba(255, 255, 255, 0.78);
     text-align: left;
-    margin-left: 0;
-    padding-left: 1.5rem;
+    hyphens: none;
 }
 
-.article-content h2, 
-.article-content h3,
+.article-content h2,
 .article-content h3,
 .article-content h4,
 .article-content h5,
 .article-content h6 {
-    margin-top: 40px;
-    margin-bottom: 0.5rem;
-    color: #2c3e50;
+    margin-top: 52px;
+    margin-bottom: 18px;
+    color: #ffffff;
     text-align: left;
-    font-size: 1.5rem;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
 }
 
-/* Styling the images */
+.article-content h2 {
+    font-size: 1.85rem;
+}
+
+.article-content h3 {
+    font-size: 1.45rem;
+}
+
+.article-content h4,
+.article-content h5,
+.article-content h6 {
+    font-size: 1.25rem;
+}
+
+.article-content ul,
+.article-content ol {
+    text-align: left;
+    margin: 20px 0 28px 0;
+    padding-left: 1.5rem;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.article-content li {
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+
+.article-content a {
+    color: #cfff00;
+    font-weight: 700;
+    text-underline-offset: 3px;
+}
+
+.article-content blockquote {
+    margin: 40px 0;
+    padding: 24px 28px;
+    border-left: 4px solid #cfff00;
+    border-radius: 0 18px 18px 0;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 1.12rem;
+    line-height: 1.75;
+    font-style: italic;
+}
+
+/* Images inside articles */
+
 .article-image {
-    margin: 30px auto;
+    margin: 42px auto;
     max-width: 100%;
     text-align: center;
 }
 
 .article-image img {
-    max-width: 100%;
+    width: 100%;
+    max-width: 760px;
     height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 18px;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.38);
 }
 
 .article-image figcaption {
-    margin-top: 10px;
+    max-width: 720px;
+    margin: 12px auto 0 auto;
+    color: rgba(255, 255, 255, 0.55);
     font-size: 0.9rem;
-    color: #666;
     font-style: italic;
-    line-height: 1.4;
-    text-align: left;
-    hyphens: auto;
+    line-height: 1.5;
+    text-align: center;
 }
 
+/* Continue exploring */
+
+.next-reads {
+    max-width: 860px;
+    margin: 76px auto 0 auto;
+    padding-top: 36px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.next-reads h2 {
+    margin: 0 0 28px 0;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.7rem;
+    letter-spacing: -0.03em;
+}
+
+.next-read-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.next-read-card {
+    display: block;
+    padding: 24px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.045);
+    color: #ffffff;
+    text-decoration: none;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+    transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+}
+
+.next-read-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(207, 255, 0, 0.32);
+    background: rgba(207, 255, 0, 0.07);
+}
+
+.next-read-card span {
+    display: block;
+    margin-bottom: 8px;
+    color: #cfff00;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.next-read-card strong {
+    display: block;
+    color: #ffffff;
+    font-size: 1.05rem;
+    line-height: 1.45;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+    .article-page {
+        padding: 120px 18px 0 18px;
+        margin-bottom: 60px;
+    }
+
+    .article-header {
+        margin-bottom: 36px;
+        padding-bottom: 28px;
+    }
+
+    .article-content p {
+        font-size: 1rem;
+        line-height: 1.75;
+    }
+
+    .article-content h2 {
+        font-size: 1.5rem;
+        margin-top: 42px;
+    }
+
+    .article-meta {
+        flex-wrap: wrap;
+    }
+}
+
+
+/* Shared Footer Design */
+/* ---------------- Shared Footer ---------------- */
+
+.site-footer {
+    margin-top: 100px;
+    padding: 56px 0 28px 0;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.02),
+            rgba(255, 255, 255, 0.04)
+        ),
+        #050505;
+    border-top: 1px solid rgba(207, 255, 0, 0.16);
+}
+
+.footer-inner {
+    width: min(1180px, 92vw);
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr 0.9fr 1fr;
+    gap: 42px;
+}
+
+.footer-brand p,
+.footer-column p {
+    color: rgba(255, 255, 255, 0.62);
+    line-height: 1.65;
+    margin: 14px 0 0 0;
+}
+
+.footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+}
+
+.footer-logo img {
+    width: 42px;
+    height: auto;
+    display: block;
+}
+
+.footer-logo span {
+    font-size: 1.05rem;
+}
+
+.footer-column h3 {
+    margin: 0 0 16px 0;
+    color: #cfff00;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column li {
+    margin-bottom: 10px;
+}
+
+.footer-column a,
+.footer-email {
+    color: rgba(255, 255, 255, 0.72);
+    text-decoration: none;
+    font-weight: 650;
+    transition: color 0.2s ease;
+}
+
+.footer-column a:hover,
+.footer-email:hover {
+    color: #cfff00;
+}
+
+.footer-email {
+    display: inline-block;
+    margin-top: 12px;
+    word-break: break-word;
+}
+
+.footer-bottom {
+    width: min(1180px, 92vw);
+    margin: 44px auto 0 auto;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.42);
+    font-size: 0.9rem;
+}
+
+.footer-contact {
+    margin-top: 22px;
+}
+
+.footer-contact span {
+    display: block;
+    margin-bottom: 8px;
+    color: #cfff00;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.footer-contact a {
+    color: rgba(255, 255, 255, 0.72);
+    text-decoration: none;
+    font-weight: 650;
+    word-break: break-word;
+}
+
+.footer-contact a:hover {
+    color: #cfff00;
+}
+
+/* Footer mobile */
+
+@media (max-width: 850px) {
+    .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 34px;
+    }
+}
+
+@media (max-width: 600px) {
+    .site-footer {
+        margin-top: 70px;
+        padding-top: 42px;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Reusable article collection search, preset filters, and theme badges. */
+.article-collection [hidden] {
+    display: none !important;
+}
+
+.collection-controls {
+    max-width: 740px;
+    margin: 0 auto 28px;
+    text-align: left;
+}
+
+.collection-controls label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.collection-controls input {
+    width: 100%;
+    min-height: 50px;
+    padding: 13px 18px;
+    border: 1px solid rgba(207, 255, 0, 0.24);
+    border-radius: 12px;
+    background: #111;
+    color: #fff;
+    font: inherit;
+    color-scheme: dark;
+}
+
+.collection-controls input::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.theme-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.theme-filter {
+    min-height: 44px;
+    padding: 9px 16px;
+    border: 1px solid rgba(207, 255, 0, 0.24);
+    border-radius: 999px;
+    background: #111;
+    color: #eee;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.theme-filter:hover {
+    border-color: #cfff00;
+}
+
+.theme-filter[aria-pressed="true"] {
+    background: #cfff00;
+    color: #111;
+    border-color: #cfff00;
+}
+
+.collection-controls input:focus-visible,
+.theme-filter:focus-visible {
+    outline: 2px solid #cfff00;
+    outline-offset: 4px;
+}
+
+.collection-status,
+.collection-empty {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.collection-status {
+    margin: 16px 0 0;
+}
+
+.article-collection .article-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 420px));
+}
+
+.article-collection .article-card-image {
+    text-align: left;
+}
+
+.article-theme {
+    position: relative;
+    z-index: 2;
+    align-self: flex-end;
+    max-width: 100%;
+    margin-bottom: 18px;
+    padding: 6px 11px;
+    border: 1px solid rgba(207, 255, 0, 0.5);
+    border-radius: 6px;
+    background: #cfff00;
+    color: #111;
+    font-size: 0.75rem;
+    font-weight: 800;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+    main.article-collection {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+}
+
+/* Keep multiple themes together at the top right of an article card. */
+.article-themes {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+.article-themes .article-theme { margin-bottom: 0; }
+.dropdown:focus-within .dropdown-content { display: block; }
+
+
+/* Primary themes remain distinct from the lime topic filters. */
+.theme-filter-primary {
+    color: #a9d8ff;
+    background: #102336;
+    border-color: #609dcc;
+}
+.theme-filter-primary:hover {
+    border-color: #a9d8ff;
+}
+.theme-filter-primary[aria-pressed="true"] {
+    color: #081522;
+    background: #a9d8ff;
+    border-color: #a9d8ff;
+}
+.collection-filter-help {
+    margin: 14px 0 0;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+
+/* Allow the expanded navigation to fit narrow screens. */
+@media (max-width: 600px) {
+    nav .container { gap: 12px; }
+    nav .logo img { height: 32px; }
+    nav .nav-links {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 6px 14px;
+    }
+    nav .nav-links a { font-size: 0.85rem; }
+}

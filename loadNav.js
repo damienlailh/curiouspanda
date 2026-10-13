@@ -1,6 +1,8 @@
-fetch("/curiouspanda/components/nav.html")
+fetch("/components/nav.html")
   .then(response => response.text())
-  .then(html => {
-    document.getElementById("navbar").innerHTML = html;
+  .then(data => {
+    document.getElementById("navbar").innerHTML = data;
   })
-  .catch(error => console.error("Error loading navbar:", error));
+  .catch(error => {
+    console.error("Error loading navbar:", error);
+  });
