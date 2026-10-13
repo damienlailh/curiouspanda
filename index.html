@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CuriousPanda</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/png">
 </head>
 
 <body>
@@ -24,8 +25,8 @@
                 </p>
 
                 <div class="preview-actions">
-                    <a href="#" class="preview-btn primary">Explore Topics</a>
-                    <a href="#" class="preview-btn secondary">Latest Reads</a>
+                    <a href="#topics" class="preview-btn primary">Explore Topics</a>
+                    <a href="opinion.html" class="preview-btn secondary">Latest Reads</a>
                 </div>
             </section>
 
@@ -35,41 +36,43 @@
                     <div class="orb-background" aria-hidden="true"></div>
 
                     <!-- Separate orbital lanes keep the electrons apart at every angle. -->
-                    <div class="atom-orbit atom-orbit-one" aria-hidden="true">
-                        <span class="atom-electron"></span>
-                    </div>
-                    <div class="atom-orbit atom-orbit-two" aria-hidden="true">
-                        <span class="atom-electron"></span>
-                    </div>
-                    <div class="atom-orbit atom-orbit-three" aria-hidden="true">
-                        <span class="atom-electron"></span>
+                    <div class="atom-lanes" aria-hidden="true">
+                        <div class="atom-orbit atom-orbit-one" aria-hidden="true">
+                            <span class="atom-electron"></span>
+                        </div>
+                        <div class="atom-orbit atom-orbit-two" aria-hidden="true">
+                            <span class="atom-electron"></span>
+                        </div>
+                        <div class="atom-orbit atom-orbit-three" aria-hidden="true">
+                            <span class="atom-electron"></span>
+                        </div>
+
                     </div>
 
                     <div class="panda-face">
                         <img class="panda-portrait" src="images/panda-cartoon.png"
-                            alt="A cute cartoon panda with rounded cheeks and a gentle smile"
-                            width="1254" height="1254" fetchpriority="high">
+                            alt="A cute cartoon panda with rounded cheeks and a gentle smile" fetchpriority="high" width="1254" height="1254">
                     </div>
 
-                    <a href="/chinese.html" class="orbit-tag orbit-tag-chinese">Chinese Writings</a>
+                    <a href="chinese.html" class="orbit-tag orbit-tag-chinese">Chinese Writings</a>
                     <!-- Hide for Now
-                    <a href="/alevel.html" class="orbit-tag orbit-tag-gp">A Levels</a>
+                    <a href="alevel.html" class="orbit-tag orbit-tag-gp">A Levels</a>
                     -->
-                    <a href="#" class="orbit-tag orbit-tag-nature">Chemistry</a>
-                    <a href="/opinion.html" class="orbit-tag orbit-tag-ideas">Opinions</a>
+                    <a href="chemistry.html" class="orbit-tag orbit-tag-nature">Chemistry</a>
+                    <a href="opinion.html" class="orbit-tag orbit-tag-ideas">Opinions</a>
 
                 </div>
             </section>
         </section>
-        
+
         <!-- Creating the Curiosity Portal -->
         <section class="portal-section" id="topics">
             <p class="section-kicker">Curiosity Portals</p>
             <h2 class="section-title">Explore by Topic</h2>
 
             <div class="portal-grid">
-                <a href="/opinion.html" class="portal-card">
-                    <img src="/images/panda_book.jpg" alt="A panda reading a book" class="portal-card-img">
+                <a href="opinion.html" class="portal-card">
+                    <img src="images/panda_book.jpg" alt="A panda reading a book" class="portal-card-img" width="1200" height="672">
                     <div class="portal-card-overlay"></div>
                     <div class="portal-card-content">
                         <h3>Opinions</h3>
@@ -78,8 +81,8 @@
                     <span class="portal-arrow">↗</span>
                 </a>
 
-                <a href="/chemistry.html" class="portal-card">
-                    <img src="/images/panda_chemistry.png" alt="Chemistry panda illustration" class="portal-card-img">
+                <a href="chemistry.html" class="portal-card">
+                    <img src="images/panda_chemistry.png" alt="Chemistry panda illustration" class="portal-card-img" width="1448" height="1086">
                     <div class="portal-card-overlay"></div>
                     <div class="portal-card-content">
                         <h3>Chemistry</h3>
@@ -88,8 +91,8 @@
                     <span class="portal-arrow">&#8599;</span>
                 </a>
 
-                <a href="/chinese.html" class="portal-card">
-                    <img src="/images/panda_chinese.png" alt="Chinese Writings panda illustration" class="portal-card-img">
+                <a href="chinese.html" class="portal-card">
+                    <img src="images/panda_chinese.png" alt="Chinese Writings panda illustration" class="portal-card-img" width="1448" height="1086">
                     <div class="portal-card-overlay"></div>
                     <div class="portal-card-content">
                         <h3>Chinese Writings</h3>
@@ -100,12 +103,12 @@
 
             </div>
         </section>
-        
-        
+
+
     </main>
     <div id="footer"></div>
     <!-- Link to javascripts -->
-     <script src="/loadNav.js"></script>
-     <script src="/loadFooter.js"></script>
+     <script src="loadNav.js"></script>
+     <script src="loadFooter.js"></script>
 </body>
 </html>

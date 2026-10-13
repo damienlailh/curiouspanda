@@ -4,7 +4,9 @@
     if (!titleLink) return;
 
     const storageKey = 'curiouspanda.chinese.daily-title.v1';
-    const listingUrl = new URL('/chinese.html', window.location.href);
+    const siteRoot = new URL('../', document.currentScript.src);
+    const listingUrl = new URL('chinese.html', siteRoot);
+    const articlePrefix = new URL('Chinese/', siteRoot).pathname;
 
     const localDay = () => {
         const now = new Date();
@@ -23,7 +25,7 @@
             if (!title || !href) return;
             try {
                 const url = new URL(href, listingUrl);
-                if (url.origin !== listingUrl.origin || !url.pathname.startsWith('/Chinese/')
+                if (url.origin !== listingUrl.origin || !url.pathname.startsWith(articlePrefix)
                     || !url.pathname.endsWith('.html')) return;
                 entries.set(url.pathname, { title, href: url.pathname });
             } catch {
