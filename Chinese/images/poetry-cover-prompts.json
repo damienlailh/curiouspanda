@@ -1,0 +1,13 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "path": "Chinese/images/panda-bamboo.png",
+      "prompt": "Use case: illustration-story. Asset type: landscape cover for a Chinese poetry card and poem page, approximately 8:5 aspect ratio. Primary request: a quiet panda standing among tall graceful bamboo beside a mossy stone path after rain, gazing upward at bamboo leaves moving gently in the breeze. Style/medium: richly detailed painterly Chinese ink-and-watercolor fantasy illustration on textured paper, atmospheric mist, expressive soft panda, consistent with the existing Chinese panda essay and poem covers. Palette: deep jade bamboo, cool blue-gray mist, subtle warm golden morning light. Composition/framing: one panda and several clear bamboo stems near the center, important subjects in the central 60 percent so both a landscape article image and a cropped card work; layered mountain hints beyond the bamboo. Mood: integrity, resilience, quiet contemplation. Constraints: one panda, natural coherent bamboo, no lettering, no calligraphy, no text, no logos or watermarks."
+    },
+    {
+      "path": "Chinese/images/panda-game-of-life.png",
+      "prompt": "Use case: illustration-story. Asset type: landscape cover for a Chinese poetry card and poem page, approximately 8:5 aspect ratio. Primary request: a thoughtful panda seated at a low stone table in an open traditional Chinese mountain pavilion, considering a Go board with a restrained arrangement of black and white stones, one paw poised above the board. Style/medium: richly detailed painterly Chinese ink-and-watercolor fantasy illustration on textured paper, expressive soft panda, consistent with the existing Chinese panda essay and poem covers. Palette: cool blue-gray mountains and mist, warm golden light touching the table and panda. Composition/framing: one panda and the square Go board near center, important subjects within the central 60 percent for card cropping; a calm river and distant mountains beyond. The board has a coherent regular square grid and a few black and white stones placed on intersections. Mood: life's choices, patience, reflection. Constraints: one panda, Go board rather than chess pieces, no lettering, no calligraphy, no text, no logos or watermarks."
+    }
+  ]
+}

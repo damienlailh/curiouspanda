@@ -678,6 +678,11 @@ main.container h1 {
     transition: transform 0.35s ease, filter 0.35s ease;
 }
 
+/* Empty image paths are reserved for upcoming article cards. */
+.article-card-bg[src=""] {
+    display: none;
+}
+
 .card-overlay {
     position: absolute;
     inset: 0;

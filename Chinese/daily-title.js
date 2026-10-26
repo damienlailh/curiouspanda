@@ -3,19 +3,10 @@
     const titleLink = banner?.querySelector('[data-daily-title-link]');
     if (!titleLink) return;
 
-    const storageKey = 'curiouspanda.chinese.daily-title.v1';
+    const storageKey = 'curiouspanda.chinese.last-title.v1';
     const siteRoot = new URL('../', document.currentScript.src);
     const listingUrl = new URL('chinese.html', siteRoot);
     const articlePrefix = new URL('Chinese/', siteRoot).pathname;
-
-    const localDay = () => {
-        const now = new Date();
-        return [
-            now.getFullYear(),
-            String(now.getMonth() + 1).padStart(2, '0'),
-            String(now.getDate()).padStart(2, '0')
-        ].join('-');
-    };
 
     const collectTitles = (source) => {
         const entries = new Map();
@@ -45,54 +36,36 @@
         return collectTitles(source);
     };
 
-    // A stable daily fallback also works with browser storage disabled.
-    const fallbackTitle = (titles, day) => {
-        const hash = [...day].reduce((value, character) => (
-            (Math.imul(value, 31) + character.charCodeAt(0)) >>> 0
-        ), 0);
-        return titles[hash % titles.length];
-    };
-
-    const chooseTitle = (titles, day) => {
+    const chooseTitle = (titles) => {
+        let previous = null;
         try {
-            let saved = null;
-            try {
-                saved = JSON.parse(localStorage.getItem(storageKey));
-            } catch {
-                // A damaged saved value can be replaced with a fresh choice.
-            }
-            const previous = saved?.day === day
-                ? titles.find((entry) => entry.href === saved.href)
-                : null;
-            if (previous) return previous;
-
-            const selected = titles[Math.floor(Math.random() * titles.length)];
-            localStorage.setItem(storageKey, JSON.stringify({ day, href: selected.href }));
-            return selected;
+            previous = sessionStorage.getItem(storageKey);
         } catch {
-            return fallbackTitle(titles, day);
+            // Random selection still works when browser storage is unavailable.
         }
+
+        // Avoid repeating the previous title on a reload when another is available.
+        const alternatives = titles.filter((entry) => entry.href !== previous);
+        const choices = alternatives.length ? alternatives : titles;
+        const selected = choices[Math.floor(Math.random() * choices.length)];
+
+        try {
+            sessionStorage.setItem(storageKey, selected.href);
+        } catch {
+            // Storage is optional; keep the selected title even if it cannot be saved.
+        }
+        return selected;
     };
 
     getTitles().then((titles) => {
         if (!titles.length) return; // Keep the readable static banner as a fallback.
 
-        let midnightTimer;
-        const refresh = () => {
-            const selected = chooseTitle(titles, localDay());
-            titleLink.textContent = selected.title;
-            titleLink.setAttribute('href', selected.href);
-
-            clearTimeout(midnightTimer);
-            const now = new Date();
-            const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-            midnightTimer = setTimeout(refresh, midnight.getTime() - now.getTime() + 100);
-        };
-
-        refresh();
-        document.addEventListener('visibilitychange', () => {
-            if (!document.hidden) refresh();
-        });
+        const selected = chooseTitle(titles);
+        // Spaces in a title mark explicit line breaks in the quote banner.
+        const lines = selected.title.split(/\s+/);
+        titleLink.textContent = lines.join('\n');
+        titleLink.classList.toggle('chinese-daily-title-multiline', lines.length > 1);
+        titleLink.setAttribute('href', selected.href);
     }).catch(() => {
         // The static linked title remains usable if the article list cannot load.
     });

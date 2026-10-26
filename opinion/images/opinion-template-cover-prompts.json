@@ -1,0 +1,13 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "assets": [
+    {
+      "path": "opinion/images/giving-up.png",
+      "prompt": "Use case: stylized-concept. Asset type: 16:9 landscape editorial cover for an opinion article titled Giving Up. Primary request: a solitary small person seen from behind at a fork in a stone path in an open landscape, setting down a heavy worn backpack beside the junction. One branch leads toward an imposing dark staircase that disappears into storm clouds; the other follows a quiet curve toward a soft golden horizon. The image should invite reflection about persistence, limits, and choosing a different direction without dictating the conclusion. Style/medium: highly detailed cinematic conceptual illustration with realistic stone and fabric textures, dramatic dark navy and charcoal atmosphere, restrained warm amber/gold light, consistent with the existing Education and Inequality editorial cover in this project. Composition/framing: landscape, main person and fork within central 60 percent so the image also crops into an article card; contemplative rather than triumphant. Constraints: no cliff-edge scene, no danger, no text or lettering, no logos, no watermark."
+    },
+    {
+      "path": "opinion/images/sg-ppe.png",
+      "prompt": "Use case: stylized-concept. Asset type: 16:9 landscape editorial cover for an opinion article titled Singapore's Government & Marginal Economics. Primary request: a conceptual Singapore civic scene with a dignified white civic building and a subtle Marina Bay skyline in the misty background. In the foreground, a large stone table holds a precise brass balance and a small set of identical bronze weights, with a single weight poised near one side, suggesting choices and decisions at the margin. The table is surrounded by branching softly illuminated pathways suggesting competing public priorities. Style/medium: highly detailed cinematic conceptual illustration with realistic architectural, stone and brass textures; dark navy and charcoal atmosphere, cool blue highlights, restrained warm amber/gold lighting, consistent with the existing Education and Inequality editorial cover in this project. Composition/framing: landscape; balance and civic building legible within central 60 percent for card cropping; thoughtful and neutral mood. Constraints: coherent level balance with two pans, no numerical charts, no labels, no currency symbols, no politicians, no personal protective equipment, no text or lettering, no logos or watermark."
+    }
+  ]
+}
