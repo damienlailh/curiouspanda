@@ -3,43 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore free chemistry questions and worked solutions, organised by topic.">
     <title>Chemistry | CuriousPanda</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chemistry/chemistry.css">
     <link rel="icon" href="logo.png" type="image/png">
 </head>
-
-<body>
-    <!-- Navigation bar -->
+<body class="chemistry-page">
     <div id="navbar"></div>
 
-    <main class="container article-collection" data-article-collection>
-        <header class="article-header">
-            <h1 class="page-title">Chemistry</h1>
+    <!-- Reusable, local vector icons; no external icon library required. -->
+    <svg class="chemistry-symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="0" height="0">
+        <defs>
+            <symbol id="chem-flask" viewBox="0 0 48 48">
+                <path d="M18 5h12M20 5v15L9 39a3 3 0 0 0 2.6 4h24.8a3 3 0 0 0 2.6-4L28 20V5M15 30h18"/>
+                <path d="M20 35h.1M28 38h.1"/>
+            </symbol>
+            <symbol id="chem-atom" viewBox="0 0 48 48">
+                <ellipse cx="24" cy="24" rx="21" ry="8"/>
+                <ellipse cx="24" cy="24" rx="21" ry="8" transform="rotate(60 24 24)"/>
+                <ellipse cx="24" cy="24" rx="21" ry="8" transform="rotate(120 24 24)"/>
+                <circle cx="24" cy="24" r="2" fill="currentColor" stroke="none"/>
+            </symbol>
+            <symbol id="chem-bond" viewBox="0 0 48 48">
+                <path d="M24 15v12M20 30l-9 6M28 30l9 6"/>
+                <circle cx="24" cy="8" r="6"/><circle cx="24" cy="30" r="4"/>
+                <circle cx="8" cy="39" r="6"/><circle cx="40" cy="39" r="6"/>
+            </symbol>
+            <symbol id="chem-battery" viewBox="0 0 48 48">
+                <rect x="5" y="14" width="34" height="23" rx="4"/><path d="M39 21h4v9h-4M10 8h8M14 4v8M29 8h8M23 19l-6 10h7l-2 5 9-11h-8z"/>
+            </symbol>
+            <symbol id="chem-gas" viewBox="0 0 48 48">
+                <rect x="6" y="6" width="36" height="36" rx="6"/>
+                <circle cx="16" cy="17" r="3"/><circle cx="32" cy="15" r="3"/>
+                <circle cx="25" cy="29" r="3"/><path d="M11 32l3-3M33 34l3 3M23 11l-2 3"/>
+            </symbol>
+            <symbol id="chem-pdf" viewBox="0 0 32 38">
+                <path d="M5 2h15l8 8v25H5zM20 2v9h8"/>
+                <text x="16" y="27" text-anchor="middle" fill="currentColor" stroke="none" font-size="9" font-weight="800">PDF</text>
+            </symbol>
+            <symbol id="chem-download" viewBox="0 0 24 24">
+                <path d="M12 3v12m-5-5 5 5 5-5M5 18v3h14v-3"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <main class="chemistry-library" data-chemistry-library>
+        <header class="chemistry-hero">
+            <p class="chemistry-kicker">The chemistry library</p>
+            <h1>Understand more. Solve better.</h1>
+            <p class="chemistry-intro">Challenging questions and clear worked solutions. Always free to download.</p>
         </header>
 
-        <section class="article-content">
-            <p>Explore chemistry through notes, explanations, and reflections.</p>
-        </section>
-
-        <!-- Reuse these controls and articleCollection.js on other section pages.
-             Each card's article-theme badge defines its preset theme. -->
-        <div class="collection-controls" data-collection-controls hidden>
-            <label for="article-search">Search articles</label>
-            <input id="article-search" type="search" data-article-search
-                placeholder="Search by title, keyword, or theme..." aria-controls="article-results">
-            <p class="collection-filter-help" id="theme-filter-help">Select themes to narrow your search. Articles must match every selected theme.</p>
-            <div class="theme-filters" data-theme-filters role="group" aria-label="Filter by themes" aria-describedby="theme-filter-help"></div>
-            <p class="collection-status" data-collection-status role="status" aria-live="polite" aria-atomic="true"></p>
+        <div class="chemistry-controls" data-chemistry-controls hidden>
+            <label class="chemistry-search" for="chemistry-search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="7.5"/><path d="m16 16 5 5"/></svg>
+                <span class="chemistry-sr-only">Search chemistry topics</span>
+                <input id="chemistry-search" type="search" placeholder="Search topics..." autocomplete="off" aria-controls="chemistry-topics">
+            </label>
+            <div class="chemistry-toolbar">
+                <button class="chemistry-all-topics" type="button" data-chemistry-reset aria-controls="chemistry-topics">All topics</button>
+                <span class="chemistry-format">Questions &amp; worked solutions <span aria-hidden="true">&middot;</span> PDF</span>
+                <p class="chemistry-count" data-chemistry-count role="status" aria-live="polite" aria-atomic="true">5 topics</p>
+            </div>
         </div>
 
-        <div class="article-grid" id="article-results">
-            <!-- Add article cards here; their badges provide the theme filters. -->
+        <!-- Add PDFs to the matching chemistry/<topic>/ folder, then fill in href="".
+             Example: href="chemistry/acid-base/worked-solutions.pdf". Only the href needs changing.
+             Each card has independent Questions and Worked solutions links, in that order. -->
+        <div class="chemistry-grid" id="chemistry-topics">
+            <article class="chemistry-card" aria-labelledby="acid-base-title" data-search-keywords="acid base acids bases pH pKa neutralisation">
+                <header class="chemistry-card-header">
+                    <span class="chemistry-topic-icon chemistry-icon-mint" aria-hidden="true">
+                        <svg><use href="#chem-flask"></use></svg>
+                    </span>
+                    <div class="chemistry-card-heading">
+                        <p class="chemistry-category">Physical</p>
+                        <h2 id="acid-base-title">Acid-base</h2>
+                    </div>
+                    <span class="chemistry-free">Free</span>
+                </header>
+                <p class="chemistry-description">Equilibria, buffers and titration curves.</p>
+                <div class="chemistry-resources">
+                    <!-- PDF path: chemistry/acid-base/questions.pdf (or your chosen filename) -->
+                    <a class="chemistry-download" href="chemistry/acid-base/acid_base_question.pdf" download aria-label="Download Acid-base questions (PDF)">
+                        <svg class="chemistry-pdf-icon" aria-hidden="true"><use href="#chem-pdf"></use></svg>
+                        <span class="chemistry-resource-copy">
+                            <span class="chemistry-resource-name">Questions</span>
+                            <span class="chemistry-resource-format">PDF<span class="chemistry-pending"> &middot; Coming soon</span><span class="chemistry-ready"> &middot; Download</span></span>
+                        </span>
+                        <svg class="chemistry-download-icon" aria-hidden="true"><use href="#chem-download"></use></svg>
+                    </a>
+                    <!-- PDF path: chemistry/acid-base/worked-solutions.pdf (or your chosen filename) -->
+                    <a class="chemistry-download" href="chemistry/acid-base/acid_base_question-and-answers.pdf" download aria-label="Download Acid-base worked solutions (PDF)">
+                        <svg class="chemistry-pdf-icon" aria-hidden="true"><use href="#chem-pdf"></use></svg>
+                        <span class="chemistry-resource-copy">
+                            <span class="chemistry-resource-name">Worked solutions</span>
+                            <span class="chemistry-resource-format">PDF<span class="chemistry-pending"> &middot; Coming soon</span><span class="chemistry-ready"> &middot; Download</span></span>
+                        </span>
+                        <svg class="chemistry-download-icon" aria-hidden="true"><use href="#chem-download"></use></svg>
+                    </a>
+                </div>
+            </article>
+            <article class="chemistry-card" aria-labelledby="atomic-structure-title" data-search-keywords="atoms electron configuration ionisation energy">
+                <header class="chemistry-card-header">
+                    <span class="chemistry-topic-icon chemistry-icon-green" aria-hidden="true">
+                        <svg><use href="#chem-atom"></use></svg>
+                    </span>
+                    <div class="chemistry-card-heading">
+                        <p class="chemistry-category">Physical</p>
+                        <h2 id="atomic-structure-title">Atomic Structure</h2>
+                    </div>
+                    <span class="chemistry-free">Free</span>
+                </header>
+                <p class="chemistry-description">Orbitals, electrons and periodic trends.</p>
+                <div class="chemistry-resources">
+                    <!-- PDF path: chemistry/atomic-structure/questions.pdf (or your chosen filename) -->
+                    <a class="chemistry-download" href="chemistry/atomic-structure/atomic_structure_p.pdf" download aria-label="Download Atomic Structure questions (PDF)">
+                        <svg class="chemistry-pdf-icon" aria-hidden="true"><use href="#chem-pdf"></use></svg>
+                        <span class="chemistry-resource-copy">
+                            <span class="chemistry-resource-name">Questions</span>
+                            <span class="chemistry-resource-format">PDF<span class="chemistry-pending"> &middot; Coming soon</span><span class="chemistry-ready"> &middot; Download</span></span>
+                        </span>
+                        <svg class="chemistry-download-icon" aria-hidden="true"><use href="#chem-download"></use></svg>
+                    </a>
+                    <!-- PDF path: chemistry/atomic-structure/worked-solutions.pdf (or your chosen filename) -->
+                    <a class="chemistry-download" href="chemistry/atomic-structure/atomic_structure_pns.pdf" download aria-label="Download Atomic Structure worked solutions (PDF)">
+                        <svg class="chemistry-pdf-icon" aria-hidden="true"><use href="#chem-pdf"></use></svg>
+                        <span class="chemistry-resource-copy">
+                            <span class="chemistry-resource-name">Worked solutions</span>
+                            <span class="chemistry-resource-format">PDF<span class="chemistry-pending"> &middot; Coming soon</span><span class="chemistry-ready"> &middot; Download</span></span>
+                        </span>
+                        <svg class="chemistry-download-icon" aria-hidden="true"><use href="#chem-download"></use></svg>
+                    </a>
+                </div>
+            </article>
+            <article class="chemistry-card" aria-labelledby="chemical-bonding-title" data-search-keywords="ionic covalent metallic shapes bonds">
+                <header class="chemistry-card-header">
+                    <span class="chemistry-topic-icon chemistry-icon-blue" aria-hidden="true">
+                        <svg><use href="#chem-bond"></use></svg>
+                    </span>
+                    <div class="chemistry-card-heading">
+                        <p class="chemistry-category">Physical</p>
+                        <h2 id="chemical-bonding-title">Chemical Bonding</h2>
+                    </div>
+                    <span class="chemistry-free">Free</span>
+                </header>
+                <p class="chemistry-description">Structure, geometry and intermolecular forces.</p>
+                <div class="chemistry-resources">
+                    <!-- PDF path: chemistry/chemical-bonding/questions.pdf (or your chosen filename) -->
+                    <a class="chemistry-download" href="chemistry/chemical-bonding/chemical_bonding_question.pdf" download aria-label="Download Chemical Bonding questions (PDF)">
+                        <svg class="chemistry-pdf-icon" aria-hidden="true"><use href="#chem-pdf"></use></svg>
+                        <span class="chemistry-resource-copy">
+                            <span class="chemistry-resource-name">Questions</span>
+                            <span class="chemistry-resource-format">PDF<span class="chemistry-pending"> &middot; Coming soon</span><span class="chemistry-ready"> &middot; Download</span></span>
+                        </span>
+                        <svg class="chemistry-download-icon" aria-hidden="true"><use href="#chem-download"></use></svg>
+                    </a>
+                    <!-- PDF path: chemistry/chemical-bonding/worked-solutions.pdf (or your chosen filename) -->
+                    <a class="chemistry-download" href="chemistry/chemical-bonding/chemical_bonding_question-and-answers.pdf" download aria-label="Download Chemical Bonding worked solutions (PDF)">
+                        <svg class="chemistry-pdf-icon" aria-hidden="true"><use href="#chem-pdf"></use></svg>
+                        <span class="chemistry-resource-copy">
+                            <span class="chemistry-resource-name">Worked solutions</span>
+                            <span class="chemistry-resource-format">PDF<span class="chemistry-pending"> &middot; Coming soon</span><span class="chemistry-ready"> &middot; Download</span></span>
+                        </span>
+                        <svg class="chemistry-download-icon" aria-hidden="true"><use href="#chem-download"></use></svg>
+                    </a>
+                </div>
+            </article>
+            <article class="chemistry-card" aria-labelledby="electrochemistry-title" data-search-keywords="oxidation reduction electrolysis batteries">
+                <header class="chemistry-card-header">
+                    <span class="chemistry-topic-icon chemistry-icon-purple" aria-hidden="true">
+                        <svg><use href="#chem-battery"></use></svg>
+                    </span>
+                    <div class="chemistry-card-heading">
+                        <p class="chemistry-category">Physical</p>
+                        <h2 id="electrochemistry-title">Electrochemistry</h2>
+                    </div>
+                    <span class="chemistry-free">Free</span>
+                </header>
+                <p class="chemistry-description">Redox reactions, cells and electrode potentials.</p>
+                <div class="chemistry-resources">
+                    <!-- PDF path: chemistry/electrochemistry/questions.pdf (or your chosen filename) -->
+                    <a class="chemistry-download" href="chemistry/electrochemistry/Electrolysis_Question.pdf" download aria-label="Download Electrochemistry questions (PDF)">
+                        <svg class="chemistry-pdf-icon" aria-hidden="true"><use href="#chem-pdf"></use></svg>
+                        <span class="chemistry-resource-copy">
+                            <span class="chemistry-resource-name">Questions</span>
+                            <span class="chemistry-resource-format">PDF<span class="chemistry-pending"> &middot; Coming soon</span><span class="chemistry-ready"> &middot; Download</span></span>
+                        </span>
+                        <svg class="chemistry-download-icon" aria-hidden="true"><use href="#chem-download"></use></svg>
+                    </a>
+                    <!-- PDF path: chemistry/electrochemistry/worked-solutions.pdf (or your chosen filename) -->
+                    <a class="chemistry-download" href="chemistry/electrochemistry/Electrolysis_Questions-and-Solutions.pdf" download aria-label="Download Electrochemistry worked solutions (PDF)">
+                        <svg class="chemistry-pdf-icon" aria-hidden="true"><use href="#chem-pdf"></use></svg>
+                        <span class="chemistry-resource-copy">
+                            <span class="chemistry-resource-name">Worked solutions</span>
+                            <span class="chemistry-resource-format">PDF<span class="chemistry-pending"> &middot; Coming soon</span><span class="chemistry-ready"> &middot; Download</span></span>
+                        </span>
+                        <svg class="chemistry-download-icon" aria-hidden="true"><use href="#chem-download"></use></svg>
+                    </a>
+                </div>
+            </article>
+            <article class="chemistry-card" aria-labelledby="gaseous-state-title" data-search-keywords="gases pressure volume temperature ideal gas">
+                <header class="chemistry-card-header">
+                    <span class="chemistry-topic-icon chemistry-icon-gold" aria-hidden="true">
+                        <svg><use href="#chem-gas"></use></svg>
+                    </span>
+                    <div class="chemistry-card-heading">
+                        <p class="chemistry-category">Physical</p>
+                        <h2 id="gaseous-state-title">Gaseous State</h2>
+                    </div>
+                    <span class="chemistry-free">Free</span>
+                </header>
+                <p class="chemistry-description">Gas laws, kinetic theory and ideal behaviour.</p>
+                <div class="chemistry-resources">
+                    <!-- PDF path: chemistry/gaseous-state/questions.pdf (or your chosen filename) -->
+                    <a class="chemistry-download" href="chemistry/gaseous-state/Gaseous_State_Questions.pdf" download aria-label="Download Gaseous State questions (PDF)">
+                        <svg class="chemistry-pdf-icon" aria-hidden="true"><use href="#chem-pdf"></use></svg>
+                        <span class="chemistry-resource-copy">
+                            <span class="chemistry-resource-name">Questions</span>
+                            <span class="chemistry-resource-format">PDF<span class="chemistry-pending"> &middot; Coming soon</span><span class="chemistry-ready"> &middot; Download</span></span>
+                        </span>
+                        <svg class="chemistry-download-icon" aria-hidden="true"><use href="#chem-download"></use></svg>
+                    </a>
+                    <!-- PDF path: chemistry/gaseous-state/worked-solutions.pdf (or your chosen filename) -->
+                    <a class="chemistry-download" href="chemistry/gaseous-state/Gaseous_State_Questions-and-solutions.pdf" download aria-label="Download Gaseous State worked solutions (PDF)">
+                        <svg class="chemistry-pdf-icon" aria-hidden="true"><use href="#chem-pdf"></use></svg>
+                        <span class="chemistry-resource-copy">
+                            <span class="chemistry-resource-name">Worked solutions</span>
+                            <span class="chemistry-resource-format">PDF<span class="chemistry-pending"> &middot; Coming soon</span><span class="chemistry-ready"> &middot; Download</span></span>
+                        </span>
+                        <svg class="chemistry-download-icon" aria-hidden="true"><use href="#chem-download"></use></svg>
+                    </a>
+                </div>
+            </article>
         </div>
-        <p class="collection-empty" data-collection-empty hidden>No articles yet. Check back soon.</p>
+        <p class="chemistry-empty" data-chemistry-empty hidden>No topics match your search. Try another keyword or choose All topics.</p>
+        <p class="chemistry-library-note">Made for curious minds. No sign-up required. <span>PDFs marked &ldquo;Coming soon&rdquo; will be available here once added.</span></p>
     </main>
+
     <div id="footer"></div>
-    <!-- Link to JavaScript -->
-    <script src="articleCollection.js" defer></script>
+    <script src="chemistry/chemistry.js" defer></script>
     <script src="loadNav.js"></script>
     <script src="loadFooter.js"></script>
 </body>
